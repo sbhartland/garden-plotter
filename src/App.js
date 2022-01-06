@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>This is a React app</h1>
+      <h1>Let's define some plants</h1>
       <PlantDetails plantList={ plantList } setPlantList={ setPlantList } />
       <PlantList plantList={ plantList } />
     </div>
