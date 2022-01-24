@@ -71,7 +71,6 @@ function PlantDetails({ plantList, setPlantList }) {
                     />
                     <Typography>Sun Preference</Typography>
                     <ToggleButtonGroup
-                        name="sunPreference"
                         value={sunPreference}
                         exclusive
                         onChange={handleSunPreferenceChange}

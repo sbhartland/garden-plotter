@@ -1,0 +1,8 @@
+.plant-info-container {
+    display: flex;
+    align-items: center;
+}
+
+.plant-info-container > div {
+    padding: 0 2rem 0 2rem;
+}
