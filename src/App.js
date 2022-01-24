@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <h1>Let's define some plants</h1>
       <PlantDetails plantList={ plantList } setPlantList={ setPlantList } />
-      <PlantList plantList={ plantList } />
+      <PlantList plantList={ plantList } setPlantList={ setPlantList } />
     </div>
   );
 }

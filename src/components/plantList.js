@@ -3,7 +3,11 @@ import { Button, Card, CardActions, CardContent } from "@mui/material"
 import Yard from "@mui/icons-material/Yard";
 import "./plantList.css"
 
-function PlantList({ plantList }) {
+function PlantList({ plantList, setPlantList }) {
+    const removePlant = (plantId) => {
+        setPlantList(Array.from(plantList.filter(p => p.id !== plantId)));
+    }
+
     return (
         <div>
             <ul>
@@ -13,7 +17,7 @@ function PlantList({ plantList }) {
                             <CardContent>
                                 <div className="plant-info-container">
                                     <div>
-                                        <Yard></Yard>
+                                        <Yard style={{ fontSize: 70 }}></Yard>
                                     </div>
                                     <div>
                                         <h2>{plant.name}</h2>
@@ -24,7 +28,7 @@ function PlantList({ plantList }) {
                                 </div>
                             </CardContent>
                             <CardActions>
-                                <Button size="small">Delete</Button>
+                                <Button size="small" onClick={() => removePlant(plant.id)}>Delete</Button>
                             </CardActions>
                         </Card>
                     </div>
