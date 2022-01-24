@@ -80,10 +80,10 @@ function PlantDetails({ plantList, setPlantList }) {
                             <Tooltip arrow title="Shade"><BrightnessLowIcon /></Tooltip>
                         </ToggleButton>
                         <ToggleButton value="partial" aria-label="partial sun">
-                            <Tooltip arrow title="Partial Sun"><BrightnessMediumIcon /></Tooltip>
+                            <Tooltip arrow title="Partial Sun" style={{ color: "goldenrod" }}><BrightnessMediumIcon /></Tooltip>
                         </ToggleButton>
                         <ToggleButton value="sun" aria-label="full sun">
-                            <Tooltip arrow title="Full Sun"><BrightnessHighIcon /></Tooltip>
+                            <Tooltip arrow title="Full Sun" style={{ color: "gold" }}><BrightnessHighIcon /></Tooltip>
                         </ToggleButton>
                     </ToggleButtonGroup>
                     <div>
