@@ -1,0 +1,15 @@
+.garden-tile {
+    width: 20px;
+    height: 20px;
+    background-color: sandybrown;
+    border: 1px solid peru;
+    display: inline-block;
+}
+
+.garden-tile:hover {
+    background-color: burlywood;
+}
+
+.with-plant {
+    background-color: green !important;
+}

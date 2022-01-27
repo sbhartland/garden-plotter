@@ -12,6 +12,7 @@ function App() {
   const [selectedPlantId, setSelectedPlantId] = useState();
   const [gardenWidth, setGardenWidth] = useState(5);
   const [gardenHeight, setGardenHeight] = useState(10);
+  const [plantedCrops, setPlantedCrops] = useState([]);
 
   const increaseWidth = () => {
     setGardenWidth(gardenWidth + 1);
@@ -61,8 +62,11 @@ function App() {
         </div>
         <GardenBed
           plantList={ plantList }
+          selectedPlantId={ selectedPlantId }
           gardenWidth={ gardenWidth }
           gardenHeight={ gardenHeight }
+          plantedCrops={ plantedCrops }
+          setPlantedCrops={ setPlantedCrops }
         />
       </div>
     </div>

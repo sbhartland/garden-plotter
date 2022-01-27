@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Card, CardActions, CardContent, Paper } from "@mui/material"
 import Yard from "@mui/icons-material/Yard";
-import "./plantList.css"
+import "./plantList.css";
 
 function PlantList({ plantList, setPlantList, selectedPlantId, setSelectedPlantId }) {
     const removePlant = (plantId) => {
