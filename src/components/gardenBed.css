@@ -7,9 +7,5 @@
 }
 
 .garden-tile:hover {
-    background-color: burlywood;
-}
-
-.with-plant {
-    background-color: green !important;
+    opacity: 0.7;
 }

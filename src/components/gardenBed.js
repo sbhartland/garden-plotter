@@ -4,10 +4,11 @@ import "./gardenBed.css";
 
 function GardenBed({ plantList, selectedPlantId, gardenWidth, gardenHeight, plantedCrops, setPlantedCrops }) {
     const garden = Array.apply(null, Array(gardenHeight)).map((v, h) => { return Array.apply(null, Array(gardenWidth)).map((x, w) => { return h + ',' + w }); });
-    const squaresWithPlants = plantedCrops.map(p => p.xCoordinate + ',' + p.yCoordinate);
+    const squaresWithPlants = plantedCrops.map(p => {return { coords: p.xCoordinate + ',' + p.yCoordinate, typeId: p.typeId }});
 
     const addPlant = (coords) => {
         if (!selectedPlantId) { return; }
+        if (!!(getPlantAtCoords(coords))) { return; }
 
         const splitCoords = coords.split(',');
         setPlantedCrops([...plantedCrops, {
@@ -17,6 +18,10 @@ function GardenBed({ plantList, selectedPlantId, gardenWidth, gardenHeight, plan
         }]);
     }
 
+    const getPlantAtCoords = (coords) => {
+        return squaresWithPlants.find(s => s.coords === coords);
+    }
+
     return (
         <div>
             {
@@ -24,17 +29,23 @@ function GardenBed({ plantList, selectedPlantId, gardenWidth, gardenHeight, plan
                     <div style={{ display: "flex" }} key={ 'r' + row[0] }>
                         {
                             row.map(col => {
-                                const hasPlant = squaresWithPlants.some(s => s === col);
-                                let squareClass = 'garden-tile';
-                                if (hasPlant) { squareClass += ' with-plant'; } 
+                                const sxObj = { backgroundColor: 'sandybrown' };
+                                const plantAtCoords = getPlantAtCoords(col);
+                                
+                                if (plantAtCoords) {
+                                    const plantObj = plantList.find(p => p.id === plantAtCoords.typeId);
+                                    sxObj.backgroundColor = plantObj.color;
+                                }
+
                                 return (
-                                    <Box key={ col } className={ squareClass } onClick={ () => { addPlant(col); }}></Box>
+                                    <Box key={ col } className='garden-tile' sx={ sxObj } onClick={ () => { addPlant(col); }}></Box>
                                 )}
                             )
                         }
                     </div>
                 ))
             }
+            <div>{ plantedCrops.length } plants in garden</div>
         </div>
     );
 }

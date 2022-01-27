@@ -39,7 +39,14 @@ function App() {
       <div>
         <h1>Let's define some plants</h1>
         <PlantDetails plantList={ plantList } setPlantList={ setPlantList } />
-        <PlantList plantList={ plantList } setPlantList={ setPlantList } selectedPlantId={ selectedPlantId } setSelectedPlantId={ setSelectedPlantId } />        
+        <PlantList
+          plantList={ plantList }
+          setPlantList={ setPlantList }
+          selectedPlantId={ selectedPlantId }
+          setSelectedPlantId={ setSelectedPlantId }
+          plantedCrops={ plantedCrops }
+          setPlantedCrops={ setPlantedCrops }
+        />        
       </div>
       <div>
         <div>

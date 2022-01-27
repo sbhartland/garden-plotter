@@ -9,6 +9,7 @@ function PlantDetails({ plantList, setPlantList }) {
     const [plotSize, setPlotSize] = React.useState(1);
     const [sunPreference, setSunPreference] = React.useState('partial');
 
+    const defaultColor = 'green';
     const plotSizeMarks = [
         {
           value: 1,
@@ -42,6 +43,7 @@ function PlantDetails({ plantList, setPlantList }) {
 
         setPlantList([...plantList, {
             id: uuidv4(),
+            color: defaultColor,
             name: elems.plantName.value,
             plotSize: plotSize,
             sunPreference: sunPreference,

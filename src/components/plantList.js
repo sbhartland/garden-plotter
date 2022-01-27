@@ -1,10 +1,11 @@
 import React from "react";
-import { Button, Card, CardActions, CardContent, Paper } from "@mui/material"
+import { Button, Card, CardActions, CardContent, FormControl, InputLabel, MenuItem, Paper, Select } from "@mui/material"
 import Yard from "@mui/icons-material/Yard";
 import "./plantList.css";
 
-function PlantList({ plantList, setPlantList, selectedPlantId, setSelectedPlantId }) {
+function PlantList({ plantList, setPlantList, selectedPlantId, setSelectedPlantId, plantedCrops, setPlantedCrops }) {
     const removePlant = (plantId) => {
+        if (plantedCrops.some(c => c.typeId === plantId)) { setPlantedCrops(Array.from(plantedCrops.filter(c => c.typeId !== plantId))); }
         setPlantList(Array.from(plantList.filter(p => p.id !== plantId)));
         if (plantId === selectedPlantId) {
             setSelected(undefined);
@@ -13,6 +14,11 @@ function PlantList({ plantList, setPlantList, selectedPlantId, setSelectedPlantI
 
     const setSelected = (plantId) => {
         setSelectedPlantId(plantId);
+    }
+
+    const handleColorChange = (plantId, eventObj) => {
+        const newColor = eventObj.props.value;
+        setPlantList(plantList.map(p => p.id !== plantId ? p : Object.assign({}, p, { color: newColor })));
     }
 
     return (
@@ -30,6 +36,22 @@ function PlantList({ plantList, setPlantList, selectedPlantId, setSelectedPlantI
                                             </div>
                                             <div>
                                                 <h2>{plant.name}</h2>
+                                                <div>
+                                                    <FormControl fullWidth>
+                                                    <InputLabel id="select-color">Color</InputLabel>
+                                                    <Select
+                                                        labelId="select-color"
+                                                        id="select-color"
+                                                        value={ plant.color }
+                                                        label="Age"
+                                                        onChange={ (event, eventObj) => { handleColorChange(plant.id, eventObj); } }
+                                                    >
+                                                        <MenuItem value={ 'green' }>Green</MenuItem>
+                                                        <MenuItem value={ 'blue' }>Blue</MenuItem>
+                                                        <MenuItem value={ 'chartreuse' }>Chartreuse</MenuItem>
+                                                    </Select>
+                                                    </FormControl>
+                                                </div>
                                                 <div>ID: {plant.id}</div>
                                                 <div>Plot Size: {plant.plotSize}</div>
                                                 <div>Sun Preference: {plant.sunPreference}</div>  
