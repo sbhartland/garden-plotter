@@ -3,6 +3,7 @@ import './App.css';
 import PlantDetails from './components/plantDetails';
 import PlantList from './components/plantList';
 import Garden from './components/garden'
+import WeatherGetter from './components/weatherGetter';
 
 function App() {
   const [plantList, setPlantList] = useState([]);
@@ -14,6 +15,7 @@ function App() {
   return (
     <div className="app-container">
       <div>
+        <WeatherGetter />
         <h1>Let's define some plants</h1>
         <PlantDetails plantList={ plantList } setPlantList={ setPlantList } />
         <PlantList
