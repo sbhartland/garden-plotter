@@ -25,14 +25,14 @@ function PlantList({ plantList, setPlantList, selectedPlantId, setSelectedPlantI
         <div>
             <ul>
                 {
-                    plantList.map(plant => (
+                    plantList.sort((a, b) => a.name.localeCompare(b.name)).map(plant => (
                         <div style={{ maxWidth: "40rem" }} key={ plant.id }>
                             <Paper elevation={ selectedPlantId === plant.id ? 16 : 0 }>
                                 <Card variant="outlined">
                                     <CardContent>
                                         <div className="plant-info-container">
                                             <div>
-                                                <Yard style={{ fontSize: 70 }}></Yard>
+                                                <Yard style={{ fontSize: 70, color: plant.color }}></Yard>
                                             </div>
                                             <div>
                                                 <h2>{plant.name}</h2>
